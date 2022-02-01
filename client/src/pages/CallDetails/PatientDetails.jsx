@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Paper, Radio, RadioGroup, Select, TextField } from '@mui/material';
+import { FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPatientDetails } from '../../features/patientDetails';
 

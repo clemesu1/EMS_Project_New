@@ -164,7 +164,7 @@ const VehicleDetails = () => {
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={4}>
 							<Stack spacing={2}>
-								<FormControl fullWidth ize="small">
+								<FormControl fullWidth size="small">
 									<InputLabel id="c-driver-label">Driver</InputLabel>
 									<Select
 										labelId="c-driver-label"
