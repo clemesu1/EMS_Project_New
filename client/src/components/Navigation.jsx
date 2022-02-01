@@ -56,11 +56,7 @@ const Navigation = (props) => {
 	return (
 		<div>
 			<AppBar position="fixed" open={open}>
-				<Toolbar
-					sx={{
-						pr: '24px', // keep right padding when drawer closed
-					}}
-				>
+				<Toolbar sx={{ pr: '24px' }}>
 					<IconButton
 						edge="start"
 						color="inherit"
@@ -77,7 +73,7 @@ const Navigation = (props) => {
 						noWrap
 						sx={{ flexGrow: 1 }}
 					>
-						Dashboard
+						Dotty Care
 					</Typography>
 					<IconButton color="inherit"
 					>

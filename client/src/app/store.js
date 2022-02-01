@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import callTransactionReducer from "../features/callTransaction";
 import crewLogReducer from "../features/crewLog";
-import drawerToggleReducer from '../features/drawerToggle';
-import vehicleDetailsReducer from '../features/vehicleDetails';
-import patientDetailsReducer from '../features/patientDetails';
-import incidentDetailsReducer from '../features/incidentDetails';
+import drawerToggleReducer from "../features/drawerToggle";
+import vehicleDetailsReducer from "../features/vehicleDetails";
+import patientDetailsReducer from "../features/patientDetails";
+import incidentDetailsReducer from "../features/incidentDetails";
+import patientHistoryReducer from "../features/patientHistory";
 
 export default configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
         vehicleDetails: vehicleDetailsReducer,
         patientDetails: patientDetailsReducer,
         incidentDetails: incidentDetailsReducer,
+        patientHistory: patientHistoryReducer,
     },
 });

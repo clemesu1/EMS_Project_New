@@ -7,6 +7,7 @@ import Navigation from './Navigation';
 import SignIn from '../pages/SignIn';
 import OperatorInfo from '../pages/OperatorInfo';
 import CallDetails from '../pages/CallDetails';
+import Assessment from '../pages/Assessment';
 import Copyright from './Copyright';
 
 
@@ -51,7 +52,7 @@ function DashboardContent() {
 								</Route>
 
 								<Route path="assessment">
-									{/* <Route path=":page" element={<Assessment />} /> */}
+									<Route path=":page" element={<Assessment />} />
 								</Route>
 
 								{/* <Route path="treatment" element={<PageContainer />} /> */}
