@@ -1,5 +1,5 @@
 import React from 'react';
-import { Autocomplete, Button, Box, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Stack, TextField, Typography } from '@mui/material';
+import { Autocomplete, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Stack, TextField, Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { setIncidentDetails, setIncidentLocation } from '../../features/incidentDetails';
 import ListboxComponent from '../../components/ListboxComponent';
@@ -366,7 +366,7 @@ const IncidentDetails = () => {
 							size="small"
 							label="Other"
 							value={incidentDetails.Pt_Disp_Other}
-							onChange={handleChange}
+							onChange={(e) => handleChange('Pt_Disp_Other', e.target.value)}
 							fullWidth
 						/>
 					</Grid>
