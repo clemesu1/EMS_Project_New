@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, ButtonGroup, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { setVehicleDetails } from '../../features/vehicleDetails';
@@ -11,17 +11,8 @@ const VehicleDetails = () => {
 	let dispatch = useDispatch();
 	const vehicleDetails = useSelector(state => state.vehicleDetails);
 
-	const [toType, setToType] = useState('');
-	const [toChange, setToChange] = useState('');
-	const [fromType, setFromType] = useState('');
-	const [fromChange, setFromChange] = useState('');
-
-
-
-	const handleClick = (name, value) => dispatch(setVehicleDetails({ name, value }));
-
 	const disableInput = (event) => event.preventDefault();
-
+	const handleChange = (name, value) => dispatch(setVehicleDetails({ name, value }));
 
 	return (
 		<Grid container spacing={3}>
@@ -31,9 +22,9 @@ const VehicleDetails = () => {
 						Number of Patient(s) Transported
 					</Typography>
 					<ButtonGroup sx={{ '& .Mui-disabled': { color: 'primary.main', borderColor: 'primary.light' } }} size="small" aria-label="number of patient(s) transported button group">
-						<Button onClick={() => handleClick('No_Transported', (vehicleDetails.No_Transported - 1) >= 0 ? vehicleDetails.No_Transported - 1 : vehicleDetails.No_Transported)}>-</Button>
+						<Button onClick={() => handleChange('No_Transported', (vehicleDetails.No_Transported - 1) >= 0 ? vehicleDetails.No_Transported - 1 : vehicleDetails.No_Transported)}>-</Button>
 						<Button disableRipple>{vehicleDetails.No_Transported}</Button>
-						<Button onClick={() => handleClick('No_Transported', vehicleDetails.No_Transported + 1)}>+</Button>
+						<Button onClick={() => handleChange('No_Transported', vehicleDetails.No_Transported + 1)}>+</Button>
 					</ButtonGroup>
 				</Stack>
 			</Grid>
@@ -43,49 +34,49 @@ const VehicleDetails = () => {
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_Notified', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Notified</Button>
+								<Button onClick={() => handleChange('T_Notified', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Notified</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_Notified} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_enRoute', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">En Route</Button>
+								<Button onClick={() => handleChange('T_enRoute', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">En Route</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_enRoute} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_at_Scene', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">At Scene</Button>
+								<Button onClick={() => handleChange('T_at_Scene', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">At Scene</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_at_Scene} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_Crew_Patient', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Crew Patient</Button>
+								<Button onClick={() => handleChange('T_Crew_Patient', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Crew Patient</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_Crew_Patient} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_Left_Scene', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Left Scene</Button>
+								<Button onClick={() => handleChange('T_Left_Scene', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Left Scene</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_Left_Scene} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_at_destn', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">At Destination</Button>
+								<Button onClick={() => handleChange('T_at_destn', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">At Destination</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_at_destn} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_available', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Available</Button>
+								<Button onClick={() => handleChange('T_available', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Available</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_available} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
-								<Button onClick={() => handleClick('T_backarea', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Back Area</Button>
+								<Button onClick={() => handleChange('T_backarea', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Back Area</Button>
 								<TextField onKeyDown={disableInput} value={vehicleDetails.T_backarea} fullWidth size="small" />
 							</Stack>
 						</Grid>
@@ -102,9 +93,9 @@ const VehicleDetails = () => {
 									Type
 								</Typography>
 								<ToggleButtonGroup
-									value={toType}
+									value={vehicleDetails.RTS_Type}
 									exclusive
-									onChange={(event, value) => setToType(value)}
+									onChange={(event, value) => handleChange('RTS_Type', value)}
 								>
 									<ToggleButton color="info" value="Cold">Cold</ToggleButton>
 									<ToggleButton color="error" value="Hot">Hot</ToggleButton>
@@ -117,9 +108,9 @@ const VehicleDetails = () => {
 									Change in Response
 								</Typography>
 								<ToggleButtonGroup
-									value={toChange}
+									value={vehicleDetails.RTS_Change}
 									exclusive
-									onChange={(event, value) => setToChange(value)}
+									onChange={(event, value) => handleChange('RTS_Change', value)}
 
 								>
 									<ToggleButton color="info" value="Cold">Cold</ToggleButton>
@@ -141,9 +132,9 @@ const VehicleDetails = () => {
 									Type
 								</Typography>
 								<ToggleButtonGroup
-									value={fromType}
+									value={vehicleDetails.RFS_Type}
 									exclusive
-									onChange={(event, value) => setFromType(value)}
+									onChange={(event, value) => handleChange('RFS_Type', value)}
 
 								>
 									<ToggleButton color="info" value="Cold">Cold</ToggleButton>
@@ -157,9 +148,9 @@ const VehicleDetails = () => {
 									Change in Response
 								</Typography>
 								<ToggleButtonGroup
-									value={fromChange}
+									value={vehicleDetails.RFS_Change}
 									exclusive
-									onChange={(event, value) => setFromChange(value)}
+									onChange={(event, value) => handleChange('RFS_Change', value)}
 								>
 									<ToggleButton color="info" value="Cold">Cold</ToggleButton>
 									<ToggleButton color="error" value="Hot">Hot</ToggleButton>
@@ -175,16 +166,15 @@ const VehicleDetails = () => {
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={4}>
 							<Stack spacing={2}>
-								<FormControl
-									fullWidth
-									size="small"
-								>
+								<FormControl fullWidth ize="small">
 									<InputLabel id="c-driver-label">Driver</InputLabel>
 									<Select
 										labelId="c-driver-label"
 										id="c-driver"
 										name="C_driver"
 										defaultValue=""
+										value={vehicleDetails.C_driver}
+										onChange={(e) => handleChange(e.target.name, e.target.value)}
 										label="Driver"
 									>
 										{crewTypes.map((item, index) => (
@@ -192,26 +182,29 @@ const VehicleDetails = () => {
 										))}
 									</Select>
 								</FormControl>
-								<TextField
-									size="small"
-									label="Other"
-									name="C_driv_oth"
-									fullWidth
-								/>
+								{vehicleDetails.C_driver === 'Other' &&
+									<TextField
+										size="small"
+										label="Other"
+										name="C_driv_oth"
+										value={vehicleDetails.C_driv_oth}
+										onChange={(e) => handleChange(e.target.name, e.target.value)}
+										fullWidth
+									/>
+								}
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Stack spacing={2}>
-								<FormControl
-									size="small"
-									fullWidth
-								>
+								<FormControl size="small" fullWidth>
 									<InputLabel id="c-attendant-label">Attendant</InputLabel>
 									<Select
 										labelId="c-attendant-label"
 										id="c-attendant"
 										name="C_attendant"
 										defaultValue=""
+										value={vehicleDetails.C_attendant}
+										onChange={(e) => handleChange(e.target.name, e.target.value)}
 										label="Attendant"
 									>
 										{crewTypes.map((item, index) => (
@@ -219,26 +212,29 @@ const VehicleDetails = () => {
 										))}
 									</Select>
 								</FormControl>
-								<TextField
-									size="small"
-									label="Other"
-									name="C_attn_oth"
-									fullWidth
-								/>
+								{vehicleDetails.C_attendant === 'Other' &&
+									<TextField
+										size="small"
+										label="Other"
+										name="C_attn_oth"
+										value={vehicleDetails.C_attn_oth}
+										onChange={(e) => handleChange(e.target.name, e.target.value)}
+										fullWidth
+									/>
+								}
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<Stack spacing={2}>
-								<FormControl
-									fullWidth
-									size="small"
-								>
+								<FormControl fullWidth size="small">
 									<InputLabel id="c-assistant-label">Assistant</InputLabel>
 									<Select
 										labelId="c-assistant-label"
 										id="c-assistant"
 										name="C_assistant"
 										defaultValue=""
+										value={vehicleDetails.C_assistant}
+										onChange={(e) => handleChange(e.target.name, e.target.value)}
 										label="Assistant"
 									>
 										{crewTypes.map((item, index) => (
@@ -246,12 +242,16 @@ const VehicleDetails = () => {
 										))}
 									</Select>
 								</FormControl>
-								<TextField
-									size="small"
-									label="Other"
-									name="C_asst_oth"
-									fullWidth
-								/>
+								{vehicleDetails.C_assistant === 'Other' &&
+									<TextField
+										size="small"
+										label="Other"
+										name="C_asst_oth"
+										value={vehicleDetails.C_asst_oth}
+										onChange={(e) => handleChange(e.target.name, e.target.value)}
+										fullWidth
+									/>
+								}
 							</Stack>
 						</Grid>
 					</Grid >
@@ -265,6 +265,8 @@ const VehicleDetails = () => {
 							<TextField
 								label="Out"
 								size="small"
+								value={vehicleDetails.M_Out}
+								onChange={(e) => handleChange('M_Out', e.target.value)}
 								fullWidth
 							/>
 						</Grid>
@@ -273,6 +275,8 @@ const VehicleDetails = () => {
 							<TextField
 								label="At Scene"
 								size="small"
+								value={vehicleDetails.M_atScene}
+								onChange={(e) => handleChange('M_atScene', e.target.value)}
 								fullWidth
 							/>
 						</Grid>
@@ -280,6 +284,8 @@ const VehicleDetails = () => {
 							<TextField
 								label="At Destination"
 								size="small"
+								value={vehicleDetails.M_atDest}
+								onChange={(e) => handleChange('M_atDest', e.target.value)}
 								fullWidth
 							/>
 						</Grid>
@@ -287,6 +293,8 @@ const VehicleDetails = () => {
 							<TextField
 								label="In"
 								size="small"
+								value={vehicleDetails.M_In}
+								onChange={(e) => handleChange('M_In', e.target.value)}
 								fullWidth
 							/>
 						</Grid>
@@ -294,6 +302,8 @@ const VehicleDetails = () => {
 							<TextField
 								label="Total"
 								size="small"
+								value={vehicleDetails.M_Total}
+								onChange={(e) => handleChange('M_Total', e.target.value)}
 								fullWidth
 							/>
 						</Grid>
