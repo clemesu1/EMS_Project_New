@@ -3,13 +3,11 @@ import { Button, ButtonGroup, FormControl, Grid, InputLabel, MenuItem, Paper, Se
 import { useSelector, useDispatch } from 'react-redux';
 import { setVehicleDetails } from '../../features/vehicleDetails';
 
-// Keep form state local by using `useState`. Upon submission, send to redux.
-
 const crewTypes = ["EMT-1", "EMT-2", "EMT-3", "EMR", "PCP", "ACP", "CCP", "RT", "RN", "MD", "Student", "Other"];
 
 const VehicleDetails = () => {
 	let dispatch = useDispatch();
-	const vehicleDetails = useSelector(state => state.vehicleDetails);
+	let vehicleDetails = useSelector(state => state.vehicleDetails);
 
 	const disableInput = (event) => event.preventDefault();
 	const handleChange = (name, value) => dispatch(setVehicleDetails({ name, value }));
@@ -311,8 +309,6 @@ const VehicleDetails = () => {
 				</Paper>
 			</Grid >
 		</Grid >
-
-
 	);
 };
 

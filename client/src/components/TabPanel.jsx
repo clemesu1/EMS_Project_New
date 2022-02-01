@@ -14,7 +14,13 @@ export default function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{
+                    p: 3,
+                    bgcolor: (theme) =>
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey[100]
+                            : theme.palette.grey[900]
+                }}>
                     {children}
                 </Box>
             )}

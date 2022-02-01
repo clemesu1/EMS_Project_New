@@ -22,7 +22,13 @@ function DashboardContent() {
 
 	return (
 		<ThemeProvider theme={mdTheme}>
-			<Box sx={{ display: 'flex' }}>
+			<Box sx={{
+				bgcolor: (theme) =>
+					theme.palette.mode === 'light'
+						? theme.palette.grey[100]
+						: theme.palette.grey[900],
+				display: 'flex'
+			}}>
 				<CssBaseline />
 				<Navigation />
 				<Box
