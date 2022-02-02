@@ -43,10 +43,50 @@ const patientHistorySlice = createSlice({
                 G_BodySystem: itemList,
             }
         },
+        toggleDrugListItem: (state, { payload }) => {
+            let exists = state.Alr_Drugs.indexOf(payload) > -1;
+            let itemList = state.Alr_Drugs.slice();
+            if (exists) itemList = itemList.filter(value => value !== payload)
+            else itemList.push(payload);
+            return {
+                ...state,
+                Alr_Drugs: itemList,
+            }
+        },
+        toggleEnvListItem: (state, { payload }) => {
+            let exists = state.Alr_Env.indexOf(payload) > -1;
+            let itemList = state.Alr_Env.slice();
+            if (exists) itemList = itemList.filter(value => value !== payload)
+            else itemList.push(payload);
+            return {
+                ...state,
+                Alr_Env: itemList,
+            }
+        },
+        toggleMedicationListItem: (state, { payload }) => {
+            let exists = state.Med_Name.indexOf(payload) > -1;
+            let itemList = state.Med_Name.slice();
+            if (exists) itemList = itemList.filter(value => value !== payload)
+            else itemList.push(payload);
+            return {
+                ...state,
+                Med_Name: itemList,
+            }
+        },
+        toggleHistoryListItem: (state, { payload }) => {
+            let exists = state.PH_History.indexOf(payload) > -1;
+            let itemList = state.PH_History.slice();
+            if (exists) itemList = itemList.filter(value => value !== payload)
+            else itemList.push(payload);
+            return {
+                ...state,
+                PH_History: itemList,
+            }
+        },
     },
 });
 
 
-export const { setPatientHistory, toggleBodySystemItem } = patientHistorySlice.actions;
+export const { setPatientHistory, toggleBodySystemItem, toggleDrugListItem, toggleEnvListItem, toggleMedicationListItem, toggleHistoryListItem } = patientHistorySlice.actions;
 
 export default patientHistorySlice.reducer;

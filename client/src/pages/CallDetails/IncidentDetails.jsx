@@ -42,7 +42,7 @@ const IncidentDetails = () => {
 		<Grid container spacing={3}>
 			<Grid container item spacing={3} xs={12}>
 				<Grid item xs={12} md={4}>
-					<Autocomplete
+				<Autocomplete
 						value={incidentDetails.Service_Code || serviceCodes[0]}
 						onChange={(event, newValue) => handleChange('Service_Code', newValue)}
 						inputValue={inputValue}
@@ -78,6 +78,7 @@ const IncidentDetails = () => {
 							fullWidth
 							size="small"
 							name="Dispatch_Code"
+							placeholder="__-__-__"
 							value={incidentDetails.Dispatch_Code}
 							onChange={(e) => handleChange('Dispatch_Code', e.target.value)}
 							InputProps={{
