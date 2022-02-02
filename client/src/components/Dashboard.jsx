@@ -9,6 +9,7 @@ import OperatorInfo from '../pages/OperatorInfo';
 import CallDetails from '../pages/CallDetails';
 import Assessment from '../pages/Assessment';
 import Copyright from './Copyright';
+import SaveDial from './SaveDial';
 
 
 const mdTheme = createTheme();
@@ -70,6 +71,7 @@ function DashboardContent() {
 					</Box>
 					<Copyright />
 				</Box>
+				{toggle && <SaveDial />}
 			</Box>
 		</ThemeProvider>
 	);
