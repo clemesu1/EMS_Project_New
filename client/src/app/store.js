@@ -7,6 +7,7 @@ import patientDetailsReducer from "../features/patientDetails";
 import incidentDetailsReducer from "../features/incidentDetails";
 import patientHistoryReducer from "../features/patientHistory";
 import neuroResponseReducer from "../features/neuroResponse";
+import abcsReducer from "../features/abcs";
 
 export default configureStore({
     reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
         incidentDetails: incidentDetailsReducer,
         patientHistory: patientHistoryReducer,
         neuroResponse: neuroResponseReducer,
+        abcs: abcsReducer,
     },
 });
