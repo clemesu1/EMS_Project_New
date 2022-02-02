@@ -18,8 +18,8 @@ const Allergies = () => {
 				<Typography variant="h6">Allergies (select all that are applicable)</Typography>
 			</Grid>
 			<Grid item xs={12} md={6}>
-				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
-					<Typography color="textSecondary">Drugs</Typography>
+				<Paper variant="outlined" sx={{ width: '100%' }}>
+					<Typography color="textSecondary" variant="subtitle2" sx={{ pt: 2, pl: 2, pb: 1 }}>Drugs</Typography>
 					<List sx={{
 						width: '100%',
 						maxHeight: '25rem',
@@ -48,13 +48,14 @@ const Allergies = () => {
 				</Paper>
 			</Grid>
 			<Grid item xs={12} md={6}>
-				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
-					<Typography color="textSecondary">Environmental</Typography>
+				<Paper variant="outlined" sx={{ width: '100%' }}>
+					<Typography color="textSecondary" variant="subtitle2" sx={{ pt: 2, pl: 2, pb: 1 }}>Environmental</Typography>
 					<List sx={{
 						width: '100%',
 						maxHeight: '25rem',
 						overflow: 'auto'
 					}}>
+						
 						{environmentalList.map((item, index) => {
 							const labelId = `environmental-list-label-${item}`;
 							return (

@@ -46,7 +46,7 @@ const Medications = () => {
 				<Typography variant="h6">Medications (select all that are applicable)</Typography>
 			</Grid>
 			<Grid item xs={12} lg={6}>
-				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
+				<Paper variant="outlined" sx={{ width: '100%' }}>
 					<FixedSizeList
 						height={450}
 						width="100%"
@@ -61,12 +61,11 @@ const Medications = () => {
 			</Grid>
 			<Grid item xs={12} lg={6}>
 				<TextField
-					label="Other"
+					label="Other / Comments"
 					size="small"
 					fullWidth
 					multiline
-					maxRows={20}
-					rows={20}
+					rows={19}
 					sx={{ display: { xs: 'none', lg: 'block' }, width: '100%', height: '100%' }}
 					value={patientHistory.Med_Others}
 					onChange={(e) => handleChange('Med_Others', e.target.value)}
@@ -76,7 +75,7 @@ const Medications = () => {
 					size="small"
 					fullWidth
 					multiline
-					maxRows={20}
+					maxRows={19}
 					sx={{ display: { xs: 'block', lg: 'none' }, width: '100%', height: '100%' }}
 					value={patientHistory.Med_Others}
 					onChange={(e) => handleChange('Med_Others', e.target.value)}
