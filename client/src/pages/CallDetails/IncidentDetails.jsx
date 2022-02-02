@@ -42,7 +42,7 @@ const IncidentDetails = () => {
 		<Grid container spacing={3}>
 			<Grid container item spacing={3} xs={12}>
 				<Grid item xs={12} md={4}>
-				<Autocomplete
+					<Autocomplete
 						value={incidentDetails.Service_Code || serviceCodes[0]}
 						onChange={(event, newValue) => handleChange('Service_Code', newValue)}
 						inputValue={inputValue}
@@ -90,18 +90,16 @@ const IncidentDetails = () => {
 				<Grid item xs={12} md={4}>
 					<LocalizationProvider dateAdapter={AdapterDateFns}>
 						<Stack spacing={3}>
-
 							<DatePicker
 								label="Date of Incident"
-								defaultValue={new Date()}
+								defaultValue={null}
 								value={new Date(incidentDetails.Date_of_Incident)}
 								onChange={(newValue) => handleChange('Date_of_Incident', newValue.toString())}
 								renderInput={(params) => <TextField fullWidth size="small" {...params} />}
 							/>
-
 							<TimePicker
 								label="Time of Incident"
-								defaultValue={new Date()}
+								defaultValue={null}
 								value={new Date(incidentDetails.Time_of_Incident)}
 								onChange={(newValue) => handleChange('Time_of_Incident', newValue.toString())}
 								renderInput={(params) => <TextField fullWidth size="small" {...params} />}

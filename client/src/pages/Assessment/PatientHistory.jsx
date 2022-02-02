@@ -6,6 +6,7 @@ import a11yProps from '../../components/a11yProps';
 import TabPanel from '../../components/TabPanel';
 import General from './PatientHistory/General';
 import Allergies from './PatientHistory/Allergies';
+import Medications from './PatientHistory/Medications';
 const chiefComplaints = ["Abdominal Pain/Problems", "Allergies/Envenomations", "Animal Bites/Attacks", "Assault/Sexual Assault", "Back Pain (Non Traumatic)", "Breathing Problems", "Burns(Scalds)/Explosions", "Carbon Monoxide/Inhal/HAZMAT", "Cardiac or Resp Arrest/Death", "Chest Pain", "Choking", "Convulsions/Seizures", "Diabetic Problems", "Drowning/Diving/Scuba Accident", "Electrocution/Lightning", "Eye Problems/Injuries", "Falls", "Headache", "Heart Problems/A.I.C.D.", "Heat/Cold Exposure", "Hemorrhage/Lacerations", "Industrial/Machinery Accidents", "Overdose/Poisoning(Ingestion)", "Pregnancy/Childbirth/Miscarria", "Psych/Abnorml Behavior/Suicide", "Sick Person (Spec diagnosis)", "Stab/Gunshot/Penetrating Traum", "Stroke (CVA)", "Traffic/Transportation Acc", "Traumatic Injuries (Specific)", "Unconscious/Fainting (Near)", "Unknown Problem (Man Down)", "Interfacility", "Weakness"];
 
 const PatientHistory = () => {
@@ -59,7 +60,16 @@ const PatientHistory = () => {
             <Allergies />
           </TabPanel>
           <TabPanel value={tab} index={2}>
-            Item Three
+            <Medications />
+          </TabPanel>
+          <TabPanel value={tab} index={3}>
+            Item 4
+          </TabPanel>
+          <TabPanel value={tab} index={4}>
+            Item 5
+          </TabPanel>
+          <TabPanel value={tab} index={5}>
+            Item 6
           </TabPanel>
         </Paper>
       </Grid>
