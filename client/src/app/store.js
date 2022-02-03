@@ -13,6 +13,7 @@ import respiratoryReducer from "../features/respiratory";
 import seizureAssessmentReducer from "../features/seizureAssessment";
 import toxicExposureReducer from "../features/toxicExposure";
 import substanceDataReducer from "../features/substanceData";
+import cardiacArrestReducer from "../features/cardiacArrest";
 
 export default configureStore({
     reducer: {
@@ -30,6 +31,6 @@ export default configureStore({
         seizureAssessment: seizureAssessmentReducer,
         toxicExposure: toxicExposureReducer,
         substanceData: substanceDataReducer,
-
+        cardiacArrest: cardiacArrestReducer,
     },
 });

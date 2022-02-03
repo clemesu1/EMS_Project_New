@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setRespiratory, toggleBreathListItem } from '../../../features/respiratory';
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, InputLabel, MenuItem, Paper, Radio, RadioGroup, Select, Slider, Stack, TextField, Typography } from '@mui/material';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, InputLabel, MenuItem, Paper, Radio, RadioGroup, Select, Slider, Stack, TextField, Typography } from '@mui/material';
 
 const breathSoundChecksII = ['Wheezes', 'Crackles', 'Right Apex', 'Left Apex', 'Right Base', 'Left Base', 'Other'];
 

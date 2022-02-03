@@ -6,6 +6,7 @@ import a11yProps from '../../components/a11yProps';
 import Respiratory from './ComplaintBased/Respiratory';
 import Seizure from './ComplaintBased/Seizure';
 import ToxicExposure from './ComplaintBased/ToxicExposure';
+import CardiacArrest from './ComplaintBased/CardiacArrest';
 
 const ComplaintBased = () => {
   const [tab, setTab] = React.useState(0);
@@ -40,7 +41,7 @@ const ComplaintBased = () => {
             <ToxicExposure />
           </TabPanel>
           <TabPanel value={tab} index={3}>
-            4
+            <CardiacArrest />
           </TabPanel>
           <TabPanel value={tab} index={4}>
             5
