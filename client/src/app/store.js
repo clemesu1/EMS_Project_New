@@ -11,6 +11,8 @@ import abcsReducer from "../features/abcs";
 import assessFindingsReducer from "../features/assessFindings";
 import respiratoryReducer from "../features/respiratory";
 import seizureAssessmentReducer from "../features/seizureAssessment";
+import toxicExposureReducer from "../features/toxicExposure";
+import substanceDataReducer from "../features/substanceData";
 
 export default configureStore({
     reducer: {
@@ -26,5 +28,8 @@ export default configureStore({
         assessFindings: assessFindingsReducer,
         respiratory: respiratoryReducer,
         seizureAssessment: seizureAssessmentReducer,
+        toxicExposure: toxicExposureReducer,
+        substanceData: substanceDataReducer,
+
     },
 });

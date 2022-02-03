@@ -5,6 +5,17 @@ import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Gri
 
 const breathSoundChecksII = ['Wheezes', 'Crackles', 'Right Apex', 'Left Apex', 'Right Base', 'Left Base', 'Other'];
 
+const marks = [
+	{
+		value: 0,
+		label: '0',
+	},
+	{
+		value: 10,
+		label: '10',
+	},
+];
+
 const Respiratory = () => {
 	let dispatch = useDispatch();
 	let respiratory = useSelector(state => state.respiratory);
@@ -144,7 +155,7 @@ const Respiratory = () => {
 							defaultValue={0}
 							valueLabelDisplay="auto"
 							step={1}
-							marks
+							marks={marks}
 							min={0}
 							max={10}
 							value={painScale}
@@ -279,7 +290,7 @@ const Respiratory = () => {
 						defaultValue={0}
 						valueLabelDisplay="auto"
 						step={1}
-						marks
+						marks={marks}
 						min={0}
 						max={10}
 						value={painScale}

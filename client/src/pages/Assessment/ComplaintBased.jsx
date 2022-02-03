@@ -5,6 +5,7 @@ import TabPanel from '../../components/TabPanel';
 import a11yProps from '../../components/a11yProps';
 import Respiratory from './ComplaintBased/Respiratory';
 import Seizure from './ComplaintBased/Seizure';
+import ToxicExposure from './ComplaintBased/ToxicExposure';
 
 const ComplaintBased = () => {
   const [tab, setTab] = React.useState(0);
@@ -36,7 +37,7 @@ const ComplaintBased = () => {
             <Seizure />
           </TabPanel>
           <TabPanel value={tab} index={2}>
-            3
+            <ToxicExposure />
           </TabPanel>
           <TabPanel value={tab} index={3}>
             4
