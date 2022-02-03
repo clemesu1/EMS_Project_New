@@ -1,7 +1,7 @@
 import React from 'react';
-import { Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Paper, Select, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNeuroResponse, toggleStatusListItem } from '../../../features/neuroResponse';
+import { Checkbox, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Paper, Select, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 
 const status = ['Normal', 'Combative', 'Confused', 'Dysphasia', 'Hallucinations', 'Lethargic', 'Seizures', 'Tremors', 'Other']
 
@@ -13,7 +13,7 @@ const NeuroResponse = () => {
 
 	return (
 		<Grid container spacing={3}>
-			<Grid item xs={12} md={4}>
+			<Grid item xs={12} md={6} lg={4}>
 				<Stack spacing={1}>
 					<Typography variant="subtitle2">Level of Consciousness</Typography>
 					<ToggleButtonGroup
@@ -31,7 +31,7 @@ const NeuroResponse = () => {
 					</ToggleButtonGroup>
 				</Stack>
 			</Grid>
-			<Grid item xs={12} md={4}>
+			<Grid item xs={12} md={6} lg={4}>
 				<Stack spacing={3}>
 					<FormControl component="fieldset">
 						<FormGroup row>
@@ -61,7 +61,7 @@ const NeuroResponse = () => {
 					}
 				</Stack>
 			</Grid>
-			<Grid item xs={12} md={4} sx={{ display: { xs: 'none', md: 'block' } }}>
+			<Grid item xs={12} md={6} lg={4} sx={{ display: { xs: 'none', lg: 'block' } }}>
 				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
 					<Typography color="textSecondary" gutterBottom sx={{ mb: 2 }}>Sensory</Typography>
 					<Stack spacing={2}>
@@ -128,7 +128,7 @@ const NeuroResponse = () => {
 					</Stack>
 				</Paper>
 			</Grid>
-			<Grid item xs={12} md={4}>
+			<Grid item xs={12} md={6} lg={4}>
 				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
 					<Typography color="textSecondary" gutterBottom sx={{ mb: 2 }}>Left Eye</Typography>
 					<Grid container spacing={3}>
@@ -177,7 +177,7 @@ const NeuroResponse = () => {
 
 				</Paper>
 			</Grid>
-			<Grid item xs={12} md={4}>
+			<Grid item xs={12} md={6} lg={4}>
 				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
 					<Typography color="textSecondary" gutterBottom sx={{ mb: 2 }}>Right Eye</Typography>
 					<Grid container spacing={3}>
@@ -226,7 +226,7 @@ const NeuroResponse = () => {
 
 				</Paper>
 			</Grid>
-			<Grid item xs={12} md={4} sx={{ display: { xs: 'block', md: 'none' } }}>
+			<Grid item xs={12} md={6} lg={4} sx={{ display: { xs: 'block', lg: 'none' } }}>
 				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
 					<Typography color="textSecondary" gutterBottom sx={{ mb: 2 }}>Sensory</Typography>
 					<Stack spacing={2}>
@@ -293,7 +293,7 @@ const NeuroResponse = () => {
 					</Stack>
 				</Paper>
 			</Grid>
-			<Grid item xs={12} md={4}>
+			<Grid item xs={12} md={6} lg={4}>
 				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
 					<Typography color="textSecondary" gutterBottom sx={{ mb: 2 }}>Motor</Typography>
 					<Stack spacing={2}>
