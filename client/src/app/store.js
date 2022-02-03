@@ -10,6 +10,7 @@ import neuroResponseReducer from "../features/neuroResponse";
 import abcsReducer from "../features/abcs";
 import assessFindingsReducer from "../features/assessFindings";
 import respiratoryReducer from "../features/respiratory";
+import seizureAssessmentReducer from "../features/seizureAssessment";
 
 export default configureStore({
     reducer: {
@@ -24,5 +25,6 @@ export default configureStore({
         abcs: abcsReducer,
         assessFindings: assessFindingsReducer,
         respiratory: respiratoryReducer,
+        seizureAssessment: seizureAssessmentReducer,
     },
 });

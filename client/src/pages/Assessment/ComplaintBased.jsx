@@ -4,6 +4,7 @@ import { Box } from '@mui/system';
 import TabPanel from '../../components/TabPanel';
 import a11yProps from '../../components/a11yProps';
 import Respiratory from './ComplaintBased/Respiratory';
+import Seizure from './ComplaintBased/Seizure';
 
 const ComplaintBased = () => {
   const [tab, setTab] = React.useState(0);
@@ -32,7 +33,7 @@ const ComplaintBased = () => {
             <Respiratory />
           </TabPanel>
           <TabPanel value={tab} index={1}>
-            2
+            <Seizure />
           </TabPanel>
           <TabPanel value={tab} index={2}>
             3
