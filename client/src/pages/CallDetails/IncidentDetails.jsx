@@ -224,7 +224,7 @@ const IncidentDetails = () => {
 						</FormControl>
 					</Stack>
 				</Grid>
-				<Grid item xs={12} md={6} s>
+				<Grid item xs={12} md={6}>
 					<Stack spacing={3}>
 						{incidentDetails.Dest_Determinant === 'Other' &&
 							<TextField

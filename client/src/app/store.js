@@ -18,6 +18,7 @@ import chestPainReducer from "../features/chestPain";
 import neonatalAssessmentReducer from "../features/neonatalAssessment";
 import obstetricReducer from "../features/obstetric";
 import traumaAssessmentReducer from "../features/traumaAssessment";
+import mechanismInjuryReducer from "../features/mechanismInjury";
 
 export default configureStore({
     reducer: {
@@ -40,5 +41,6 @@ export default configureStore({
         neonatalAssessment: neonatalAssessmentReducer,
         obstetric: obstetricReducer,
         traumaAssessment: traumaAssessmentReducer,
+        mechanismInjury: mechanismInjuryReducer,
     },
 });
