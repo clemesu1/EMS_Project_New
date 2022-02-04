@@ -45,7 +45,13 @@ const Neonatal = () => {
 				<Grid item xs={12} lg={6}>
 					<Stack direction="row" spacing={2} alignItems="center">
 						<Button onClick={() => handleChange('Infant_Time_Breath', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Infant Time of Breathing</Button>
-						<TextField onKeyDown={disableInput} onClick={() => handleChange('Infant_Time_Breath', new Date().toLocaleTimeString('en-US'))} value={neonatalAssessment.Infant_Time_Breath} fullWidth size="small" />
+						<TextField
+							size="small"
+							name="Infant_Time_Breath"
+							value={neonatalAssessment.Infant_Time_Breath}
+							onChange={(e) => handleChange(e.target.name, e.target.value)}
+							fullWidth
+						/>
 					</Stack>
 				</Grid>
 				<Grid item xs={12} md={6} sx={{ display: { xs: 'none', lg: 'block' } }}>

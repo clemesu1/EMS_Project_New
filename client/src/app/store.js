@@ -16,6 +16,7 @@ import substanceDataReducer from "../features/substanceData";
 import cardiacArrestReducer from "../features/cardiacArrest";
 import chestPainReducer from "../features/chestPain";
 import neonatalAssessmentReducer from "../features/neonatalAssessment";
+import obstetricReducer from "../features/obstetric";
 
 export default configureStore({
     reducer: {
@@ -36,5 +37,6 @@ export default configureStore({
         cardiacArrest: cardiacArrestReducer,
         chestPain: chestPainReducer,
         neonatalAssessment: neonatalAssessmentReducer,
+        obstetric: obstetricReducer,
     },
 });
