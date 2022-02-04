@@ -7,6 +7,7 @@ import Respiratory from './ComplaintBased/Respiratory';
 import Seizure from './ComplaintBased/Seizure';
 import ToxicExposure from './ComplaintBased/ToxicExposure';
 import CardiacArrest from './ComplaintBased/CardiacArrest';
+import ChestPain from './ComplaintBased/ChestPain';
 
 const ComplaintBased = () => {
   const [tab, setTab] = React.useState(0);
@@ -44,7 +45,7 @@ const ComplaintBased = () => {
             <CardiacArrest />
           </TabPanel>
           <TabPanel value={tab} index={4}>
-            5
+            <ChestPain />
           </TabPanel>
           <TabPanel value={tab} index={5}>
             6

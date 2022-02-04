@@ -10,6 +10,7 @@ import CallDetails from '../pages/CallDetails';
 import Assessment from '../pages/Assessment';
 import Copyright from './Copyright';
 import SaveDial from './SaveDial';
+import Treatment from '../pages/Treatment';
 
 
 const mdTheme = createTheme();
@@ -47,6 +48,7 @@ function DashboardContent() {
 							<Route exact element={<PrivateWrapper />}>
 								<Route path="call-details" element={<Navigate replace to="vehicle-details" />} />
 								<Route path="assessment" element={<Navigate replace to="patient-history" />} />
+								<Route path="treatment" element={<Navigate replace to="interventions" />} />
 
 								<Route path="call-details">
 									<Route path=":page" element={<CallDetails />} />
@@ -54,6 +56,10 @@ function DashboardContent() {
 
 								<Route path="assessment">
 									<Route path=":page" element={<Assessment />} />
+								</Route>
+
+								<Route path="treatment">
+									<Route path=":page" element={<Treatment />} />
 								</Route>
 
 								{/* <Route path="treatment" element={<PageContainer />} /> */}

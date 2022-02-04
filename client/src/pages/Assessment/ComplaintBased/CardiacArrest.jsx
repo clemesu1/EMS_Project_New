@@ -10,8 +10,8 @@ const cprReasons = ["Obivious death protocol criteria met", "valid 'Do Not Resus
 const pacemaker = ["No", "Unknown", "Pacemaker", "Implanted Defibrillator", "Other"]
 
 const CardiacArrest = () => {
-	const dispatch = useDispatch();
-	const cardiacArrest = useSelector(state => state.cardiacArrest);
+	let dispatch = useDispatch();
+	let cardiacArrest = useSelector(state => state.cardiacArrest);
 
 	const handleChange = (name, value) => dispatch(setCardiacArrest({ name, value }));
 	const disableInput = (event) => event.preventDefault();

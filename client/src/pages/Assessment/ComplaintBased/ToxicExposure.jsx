@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setToxicExposure } from '../../../features/toxicExposure';
 import { setAmount, setUnit } from '../../../features/substanceData';
-import { Button, Container, FormControl, FormLabel, Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
+import { Button, Container, FormControl, Grid, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 
 const substanceNames = ["Amobarbital (Sodium Amytal; hypnotics) ", "Aprobarbital (hypnotic) ", "Butabarbital (hypnotics) ", "Butalbital (Fiorinal; sedative) ", "Hexobarbital (Sombulex; hypnotic/anesthetic) ", "Methylphenobarbital (Mebaral; antianxiety, anticonvulsant) ", "Pentobarbital (Nembutal; hypnotic) ", "Phenobarbital (Luminal; hypnotic, sedative, anticonvulsant) ", "Secobarbital (Seconal; hypnotic) ", "Sodium thiopental ", "Talbutal (Lotusate; hypnotic) ", "Thiobarbital (anesthetic) ", "Narcotic", "Heroin ", "Morphine ", "Opium ", "Cocaine", "Alcohol", "Prescription drugs"];
 const substanceTypes = ["Unknown", "Medications", "Alcohol", "Chemicals", "Plants", "Food", "Venom", "Radioactive material", "Smoke / Gas", "Other"];
