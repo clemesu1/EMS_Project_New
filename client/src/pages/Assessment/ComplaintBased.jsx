@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Tab, Tabs } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Grid, Paper, Tab, Tabs } from '@mui/material';
 import TabPanel from '../../components/TabPanel';
 import a11yProps from '../../components/a11yProps';
 import Respiratory from './ComplaintBased/Respiratory';
@@ -11,6 +10,7 @@ import ChestPain from './ComplaintBased/ChestPain';
 import Neonatal from './ComplaintBased/Neonatal';
 import Obstetric from './ComplaintBased/Obstetric';
 import Trauma from './ComplaintBased/Trauma';
+import TraumaTabPanel from '../../components/TraumaTabPanel';
 
 const ComplaintBased = () => {
   const [tab, setTab] = React.useState(0);
@@ -56,9 +56,9 @@ const ComplaintBased = () => {
           <TabPanel value={tab} index={6}>
             <Obstetric />
           </TabPanel>
-          <TabPanel value={tab} index={7}>
+          <TraumaTabPanel value={tab} index={7}>
             <Trauma />
-          </TabPanel>
+          </TraumaTabPanel>
         </Paper>
       </Grid>
     </Grid>

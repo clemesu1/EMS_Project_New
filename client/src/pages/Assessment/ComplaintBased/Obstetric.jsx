@@ -8,8 +8,6 @@ const Obstetric = () => {
 	let obstetric = useSelector(state => state.obstetric);
 
 	const handleChange = (name, value) => dispatch(setObstetric({ name, value }));
-	const disableInput = (event) => event.preventDefault();
-
 
 	return (
 		<Container>
