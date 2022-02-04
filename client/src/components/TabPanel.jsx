@@ -9,13 +9,13 @@ export default function TabPanel(props) {
         <div
             role="tabpanel"
             hidden={value !== index}
-            id={`nav-tabpanel-${index}`}
-            aria-labelledby={`nav-tab-${index}`}
+            id={`tabpanel-${index}`}
+            aria-labelledby={`tab-${index}`}
             {...other}
         >
             {value === index && (
                 <Box sx={{
-                    p: 3,
+                    p: { xs: 2, lg: 3 },
                     bgcolor: (theme) =>
                         theme.palette.mode === 'light'
                             ? theme.palette.grey[100]
