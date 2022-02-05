@@ -24,20 +24,20 @@ const Medications = ({ page }) => {
     <Container>
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} md={6} lg={8}>
-          <Typography color="textSecondary" sx={{ mb: 1 }}>Medication Given At</Typography>
+          <Typography color="textSecondary" gutterBottom>Medication Given At</Typography>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Stack direction="row" spacing={2}>
               <DatePicker
                 label="Date"
                 defaultValue={null}
-                value={new Date(medications[page - 1].Medic_Date)}
+                value={Date.parse(medications[page - 1].Medic_Date)}
                 onChange={(newValue) => handleChange('Medic_Date', newValue.toString())}
                 renderInput={(params) => <TextField fullWidth size="small" {...params} />}
               />
               <TimePicker
                 label="Time"
                 defaultValue={null}
-                value={new Date(medications[page - 1].Medic_Time)}
+                value={Date.parse(medications[page - 1].Medic_Time)}
                 onChange={(newValue) => handleChange('Medic_Time', newValue.toString())}
                 renderInput={(params) => <TextField fullWidth size="small" {...params} />}
               />
