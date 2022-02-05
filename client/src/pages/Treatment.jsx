@@ -3,8 +3,11 @@ import { Box, Tabs } from '@mui/material';
 import LinkTab from '../components/LinkTab';
 import TabPanel from '../components/TabPanel';
 import a11yProps from '../components/a11yProps';
+import Intervention from './Treatment/Intervention';
+import Medications from './Treatment/Medications';
+import VitalSign from './Treatment/VitalSign';
 
-const Treatment = () => {
+const Treatment = ({page}) => {
 	const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -21,13 +24,13 @@ const Treatment = () => {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                Interventions
+                <Intervention page={page}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Medications
+                <Medications page={page} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Vital Sign
+                <VitalSign page={page}/>
             </TabPanel>
         </Box>
     );

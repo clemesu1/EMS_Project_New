@@ -19,6 +19,9 @@ import neonatalAssessmentReducer from "../features/neonatalAssessment";
 import obstetricReducer from "../features/obstetric";
 import traumaAssessmentReducer from "../features/traumaAssessment";
 import mechanismInjuryReducer from "../features/mechanismInjury";
+import interventionReducer from "../features/intervention";
+import medicationsReducer from "../features/medications";
+import vitalSignReducer from "../features/vitalSign";
 
 export default configureStore({
     reducer: {
@@ -42,5 +45,8 @@ export default configureStore({
         obstetric: obstetricReducer,
         traumaAssessment: traumaAssessmentReducer,
         mechanismInjury: mechanismInjuryReducer,
+        intervention: interventionReducer,
+        medications: medicationsReducer,
+        vitalSign: vitalSignReducer,
     },
 });

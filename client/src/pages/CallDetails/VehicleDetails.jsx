@@ -9,7 +9,6 @@ const VehicleDetails = () => {
 	let dispatch = useDispatch();
 	let vehicleDetails = useSelector(state => state.vehicleDetails);
 
-	const disableInput = (event) => event.preventDefault();
 	const handleChange = (name, value) => dispatch(setVehicleDetails({ name, value }));
 
 	return (
@@ -27,55 +26,55 @@ const VehicleDetails = () => {
 				</Stack>
 			</Grid>
 			<Grid item xs={12}>
-				<Paper variant="outlined" sx={{ p: 2, w: '100%' }}>
+				<Paper variant="outlined" sx={{ p: 2, width: '100%' }}>
 					<Typography color="textSecondary" gutterBottom>Time</Typography>
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_Notified', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Notified</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_Notified', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_Notified} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_Notified', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_Notified} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_enRoute', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">En Route</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_enRoute', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_enRoute} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_enRoute', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_enRoute} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_at_Scene', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">At Scene</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_at_Scene', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_at_Scene} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_at_Scene', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_at_Scene} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_Crew_Patient', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Crew Patient</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_Crew_Patient', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_Crew_Patient} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_Crew_Patient', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_Crew_Patient} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_Left_Scene', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Left Scene</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_Left_Scene', new Date().toLocaleTimeString('en-US'))}value={vehicleDetails.T_Left_Scene} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_Left_Scene', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_Left_Scene} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_at_destn', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">At Destination</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_at_destn', new Date().toLocaleTimeString('en-US'))}value={vehicleDetails.T_at_destn} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_at_destn', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_at_destn} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_available', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Available</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_available', new Date().toLocaleTimeString('en-US'))}value={vehicleDetails.T_available} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_available', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_available} fullWidth size="small" />
 							</Stack>
 						</Grid>
 						<Grid item xs={12} md={6} lg={3}>
 							<Stack direction="row" spacing={2} alignItems="center">
 								<Button onClick={() => handleChange('T_backarea', new Date().toLocaleTimeString('en-US'))} fullWidth variant="outlined">Back Area</Button>
-								<TextField onKeyDown={disableInput} onClick={() => handleChange('T_backarea', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_backarea} fullWidth size="small" />
+								<TextField onClick={() => handleChange('T_backarea', new Date().toLocaleTimeString('en-US'))} value={vehicleDetails.T_backarea} fullWidth size="small" />
 							</Stack>
 						</Grid>
 					</Grid>
@@ -169,11 +168,11 @@ const VehicleDetails = () => {
 									<Select
 										labelId="c-driver-label"
 										id="c-driver"
+										label="Driver"
 										name="C_driver"
 										defaultValue=""
 										value={vehicleDetails.C_driver}
 										onChange={(e) => handleChange(e.target.name, e.target.value)}
-										label="Driver"
 									>
 										{crewTypes.map((item, index) => (
 											<MenuItem key={index} value={item}>{item}</MenuItem>

@@ -11,6 +11,7 @@ import Assessment from '../pages/Assessment';
 import Copyright from './Copyright';
 import SaveDial from './SaveDial';
 import Treatment from '../pages/Treatment';
+import TreatmentContainer from './TreatmentContainer';
 
 
 const mdTheme = createTheme();
@@ -58,11 +59,9 @@ function DashboardContent() {
 									<Route path=":page" element={<Assessment />} />
 								</Route>
 
-								<Route path="treatment">
-									<Route path=":page" element={<Treatment />} />
+								<Route path="treatment" element={<TreatmentContainer />}>
+									<Route path=":page" />
 								</Route>
-
-								{/* <Route path="treatment" element={<PageContainer />} /> */}
 
 								{/* <Route path="call-report" element={<CallReport />} /> */}
 								{/* <Route path="operator-details" element={<OperatorDetails />} /> */}
