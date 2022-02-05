@@ -30,16 +30,14 @@ const vitalSignSlice = createSlice({
     initialState,
     reducers: {
         setVitalSign: (state, { payload }) => {
-            return state.map((item) => {
-                if (item !== payload.name) {
-                    return item;
-                }
-
-                return {
-                    ...state,
+            return state.map((item, index) =>
+                index === payload.id ?
+                {
+                    ...item,
                     [payload.name]: payload.value,
-                };
-            });
+                } :
+                item
+            );
         },
         addVitalSign: (state) => {
             state.push({

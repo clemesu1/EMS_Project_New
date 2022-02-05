@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [{
     Call_ID: "12345",
-    Medic_Given_Date: null,
-    Medic_Given_Time: "",
+    Medic_Date: null,
+    Medic_Time: null,
     Medic_Given: "",
+    Medic_Now: "",
     Medic_Amount: "",
     Medic_Unit: "",
     Route: "",
@@ -17,16 +18,13 @@ const medicationsSlice = createSlice({
     initialState,
     reducers: {
         setMedications: (state, { payload }) => {
-            return state.map((item) => {
-                if (item !== payload.name) {
-                    return item;
-                }
-
-                return {
-                    ...state,
+            return state.map((item, index) =>
+                index === payload.id ? {
+                    ...item,
                     [payload.name]: payload.value,
-                };
-            });
+                } :
+                item
+            );
         },
         addMedications: (state) => {
             state.push({

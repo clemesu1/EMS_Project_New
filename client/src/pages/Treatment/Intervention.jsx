@@ -232,7 +232,7 @@ const Intervention = ({ page }) => {
             </Grid>
             <Grid item container spacing={1} xs={12} md={4}>
               <Grid item xs={12}>
-                <Typography color="textSecondary">Dosage/Amount</Typography>
+                <Typography color="textSecondary">Dosage / Amount</Typography>
               </Grid>
               <Grid item xs={6}>
                 <TextField
