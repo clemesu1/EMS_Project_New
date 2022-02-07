@@ -71,12 +71,17 @@ const General = () => {
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>
-					<TimePicker
+					<TextField 
 						label="Time of Injury"
-						defaultValue={new Date()}
-						value={new Date(patientHistory.G_Inj_Time)}
-						onChange={(newValue) => handleChange('G_Inj_Time', newValue.toString())}
-						renderInput={(params) => <TextField fullWidth size="small" {...params} />}
+						size="small"
+						fullWidth
+						type="time"
+						InputLabelProps={{
+							shrink: true,
+						  }}
+						defaultValue=""
+						value={patientHistory.G_Inj_Time}
+						onChange={(e) => handleChange('G_Inj_Time', e.target.value)}	
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>

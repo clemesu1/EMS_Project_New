@@ -10,7 +10,6 @@ import CallDetails from '../pages/CallDetails';
 import Assessment from '../pages/Assessment';
 import Copyright from './Copyright';
 import SaveDial from './SaveDial';
-import Treatment from '../pages/Treatment';
 import TreatmentContainer from './TreatmentContainer';
 
 
