@@ -85,8 +85,8 @@ const Medications = ({ page }) => {
 
   return (
     <Container>
-      <Grid container spacing={3} alignItems="center">
-        <Grid item xs={12} md={6} lg={8}>
+      <Grid container spacing={3} alignItems="flex-end">
+        <Grid item xs={12} lg={8}>
           <Typography color="textSecondary" gutterBottom>
             Medication Given At
           </Typography>
@@ -94,8 +94,7 @@ const Medications = ({ page }) => {
             <Stack direction="row" spacing={2}>
               <DatePicker
                 label="Date"
-                defaultValue={null}
-                value={Date.parse(medications[page - 1].Medic_Date)}
+                value={medications[page - 1].Medic_Date}
                 onChange={(newValue) =>
                   handleChange("Medic_Date", newValue.toString())
                 }
@@ -108,17 +107,16 @@ const Medications = ({ page }) => {
                 size="small"
                 fullWidth
                 type="time"
+                value={medications[page - 1].Medic_Time || ""}
+                onChange={(e) => handleChange("Medic_Time", e.target.value)}
                 InputLabelProps={{
                   shrink: true,
                 }}
-                defaultValue=""
-                value={medications[page - 1].Medic_Time}
-                onChange={(e) => handleChange("Medic_Time", e.target.value)}
               />
             </Stack>
           </LocalizationProvider>
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} lg={4}>
           <Button
             onClick={() => {
               handleChange("Medic_Date", format(new Date(), "MM/dd/yyyy"));

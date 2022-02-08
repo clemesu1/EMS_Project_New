@@ -34,8 +34,12 @@ Install dependencies:
 $ npm install
 ```
 
-Start the client server:
-
+Start the client server with SSR:
 ```bash
 $ npm run dev
+```
+
+Start the client server:
+```bash
+$ npm start
 ```

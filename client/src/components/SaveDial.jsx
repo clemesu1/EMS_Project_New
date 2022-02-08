@@ -12,7 +12,7 @@ import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
 import SaveIcon from "@mui/icons-material/Save";
 import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 const SaveDial = () => {
   const [open, setOpen] = React.useState(false);
@@ -72,7 +72,7 @@ const SaveDial = () => {
   const handleCopy = () => {
     const complete = {};
 
-	setOpen(true);
+    setOpen(true);
 
     // For each element in data array
     data.forEach((item) => {
@@ -82,7 +82,9 @@ const SaveDial = () => {
       }
     });
 
-    console.log(complete);
+    navigator.clipboard.writeText(JSON.stringify(complete));
+
+    // console.log(complete);
   };
 
   const handleSave = () => {

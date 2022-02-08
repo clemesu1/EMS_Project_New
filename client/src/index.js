@@ -6,7 +6,9 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.hydrate(
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+
+renderMethod(
 	<StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>

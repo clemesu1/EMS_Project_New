@@ -705,11 +705,9 @@ const VitalSign = ({ page }) => {
           <Stack direction="row" spacing={2}>
             <DatePicker
               label="Date"
-              okLabel
-              defaultValue={null}
-              value={Date.parse(vitalSign[page - 1].Vitals_Date)}
-              onChange={(newValue) =>
-                handleChange("Vitals_Date", newValue.toString())
+              value={vitalSign[page - 1].Vitals_Date}
+              onChange={(date) =>
+                handleChange("Vitals_Date", date.toString())
               }
               renderInput={(params) => (
                 <TextField fullWidth size="small" {...params} />
@@ -720,12 +718,11 @@ const VitalSign = ({ page }) => {
               size="small"
               fullWidth
               type="time"
+              value={vitalSign[page - 1].Vitals_Time || ""}
+              onChange={(e) => handleChange("Vitals_Time", e.target.value)}
               InputLabelProps={{
                 shrink: true,
               }}
-              defaultValue=""
-              value={vitalSign[page - 1].Vitals_Time}
-              onChange={(e) => handleChange("Vitals_Time", e.target.value)}
             />
           </Stack>
         </LocalizationProvider>

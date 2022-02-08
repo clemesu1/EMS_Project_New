@@ -454,8 +454,7 @@ const IncidentDetails = () => {
             <Stack spacing={3}>
               <DatePicker
                 label="Date of Incident"
-                defaultValue={new Date()}
-                value={new Date(incidentDetails.Date_of_Incident)}
+                value={incidentDetails.Date_of_Incident}
                 onChange={(newValue) =>
                   handleChange("Date_of_Incident", newValue.toString())
                 }
@@ -468,14 +467,13 @@ const IncidentDetails = () => {
                 size="small"
                 fullWidth
                 type="time"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                defaultValue={format(new Date(), "HH:mm")}
-                value={incidentDetails.Time_of_Incident}
+                value={incidentDetails.Time_of_Incident || ""}
                 onChange={(e) =>
                   handleChange("Time_of_Incident", e.target.value)
                 }
+                InputLabelProps={{
+                  shrink: true,
+                }}
               />
             </Stack>
           </LocalizationProvider>

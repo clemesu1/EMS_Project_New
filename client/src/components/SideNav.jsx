@@ -29,11 +29,11 @@ const SideNav = (props) => {
             icon: <CallReportIcon />,
             onClick: () => navigate('/call-report'),
         },
-        {
-            text: 'Operator Details',
-            icon: <OperatorDetailsIcon />,
-            onClick: () => navigate('/operator-details'),
-        },
+        // {
+        //     text: 'Operator Details',
+        //     icon: <OperatorDetailsIcon />,
+        //     onClick: () => navigate('/operator-details'),
+        // },
     ];
 
     return (
