@@ -22,7 +22,6 @@ import DispatchCodeMask from "../../components/DispatchCodeMask";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-import { format } from "date-fns";
 
 const serviceCodes = [
   "1A",

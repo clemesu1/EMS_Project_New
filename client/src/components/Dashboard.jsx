@@ -9,7 +9,7 @@ import OperatorInfo from "../pages/OperatorInfo";
 import CallDetails from "../pages/CallDetails";
 import Assessment from "../pages/Assessment";
 import Copyright from "./Copyright";
-import SaveDial from "./SaveDial";
+import ActionDial from "./ActionDial";
 import TreatmentContainer from "./TreatmentContainer";
 import CallReport from "../pages/CallReport";
 import Treatment from "../pages/Treatment";
@@ -85,7 +85,7 @@ function DashboardContent() {
           </Box>
           <Copyright />
         </Box>
-        {toggle && <SaveDial />}
+        {toggle && <ActionDial />}
       </Box>
     </ThemeProvider>
   );
