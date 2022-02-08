@@ -31,7 +31,8 @@ const vitalSignSlice = createSlice({
     reducers: {
         setVitalSign: (state, { payload }) => {
             return state.map((item, index) =>
-                index === payload.id ? {
+                index === payload.id ?
+                {
                     ...item,
                     [payload.name]: payload.value,
                 } :

@@ -15,7 +15,14 @@ export const callTransactionSlice = createSlice({
     initialState,
     reducers: {
         setCallTransaction: (state, { payload }) => {
-            state.callTransaction = payload;
+            return {
+                ...state,
+                Driver_ID: payload.driverId,
+                Attendant_ID: payload.attendantId,
+                Assisting_ID: payload.assistantId,
+                Vehicle_ID: payload.vehicleId,
+                Vehicle_Status: payload.vehicleStatus,
+            };
         },
     },
 });
