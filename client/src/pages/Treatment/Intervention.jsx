@@ -307,7 +307,7 @@ const Intervention = ({ page }) => {
                 </FormControl>
               </Stack>
             </Grid>
-            <Grid item xs={12} md={6} lg={4} alignItems="flex-start">
+            <Grid item xs={12} md={6} lg={4} alignItems="flex-start" sx={{display: { xs: 'none', lg: 'block'}}}>
               {intervention[page - 1].Procedur === "Other" && (
                 <TextField
                   size="small"
@@ -319,6 +319,18 @@ const Intervention = ({ page }) => {
                 />
               )}
             </Grid>
+            {intervention[page - 1].Procedur === "Other" && (
+              <Grid item xs={12} md={6} lg={4} alignItems="flex-start" sx={{display: { xs: 'block', lg: 'none'}}}>
+                <TextField
+                  size="small"
+                  label="Other"
+                  name="Proc_Other"
+                  value={intervention[page - 1].Proc_Other}
+                  onChange={(e) => handleChange(e.target.name, e.target.value)}
+                  fullWidth
+                />
+              </Grid>
+            )}
             <Grid item xs={12} md={3}>
               <TextField
                 size="small"
