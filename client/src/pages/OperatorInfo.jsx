@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCallTransaction } from "../features/callTransaction";
+import { toggle } from "../features/drawerToggle";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
   Avatar,
@@ -15,14 +18,10 @@ import {
   MenuItem,
 } from "@mui/material";
 import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
-import { useSelector, useDispatch } from "react-redux";
-import { setCallTransaction } from "../features/callTransaction";
-import { toggle } from "../features/drawerToggle";
 
 const theme = createTheme();
 
 export default function OperatorInfo() {
-  const callTransaction = useSelector((state) => state.callTransaction);
   let navigate = useNavigate();
   let dispatch = useDispatch();
 
