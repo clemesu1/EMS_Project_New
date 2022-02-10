@@ -13,10 +13,14 @@ import ActionDial from "./ActionDial";
 import TreatmentContainer from "./TreatmentContainer";
 import CallReport from "../pages/CallReport";
 import Treatment from "../pages/Treatment";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { amber, deepOrange, grey } from "@mui/material/colors";
 
-const mdTheme = createTheme();
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function DashboardContent() {
+  const colorMode = React.useContext(ColorModeContext);
+
   const toggle = useSelector((state) => state.drawerToggle.value);
 
   const PrivateWrapper = () => {
@@ -24,7 +28,7 @@ function DashboardContent() {
   };
 
   return (
-    <ThemeProvider theme={mdTheme}>
+    <React.Fragment>
       <Box
         sx={{
           bgcolor: (theme) =>
@@ -35,7 +39,7 @@ function DashboardContent() {
         }}
       >
         <CssBaseline />
-        <Navigation />
+        <Navigation colorMode={colorMode} />
         <Box
           component="main"
           sx={{
@@ -87,10 +91,51 @@ function DashboardContent() {
         </Box>
         {toggle && <ActionDial />}
       </Box>
-    </ThemeProvider>
+    </React.Fragment>
   );
 }
 
 export default function Dashboard() {
-  return <DashboardContent />;
+  const [mode, setMode] = React.useState("light");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const colorMode = React.useMemo(
+    () => ({
+      setLightMode: () => {
+        setMode("light");
+      },
+      setDarkMode: () => {
+        setMode("dark");
+      },
+      setSystemMode: () => {
+        setMode(prefersDarkMode ? "dark" : "light");
+      },
+    }),
+    [prefersDarkMode]
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+          ...(mode === "light"
+            ? {
+                // palette values for light mode
+              }
+            : {
+                // palette values for dark mode
+              }),
+        },
+      }),
+    [mode]
+  );
+
+  return (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <DashboardContent />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
+  );
 }
