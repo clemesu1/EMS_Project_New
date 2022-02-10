@@ -76,7 +76,7 @@ const Navigation = (props) => {
   const toggle = useSelector((state) => state.drawerToggle.value);
 
   const [open, setOpen] = React.useState(false);
-  const [settings, setSettings] = React.useState(true);
+  const [settings, setSettings] = React.useState(false);
   const [mode, setMode] = React.useState("light");
 
   const handleMode = (event, newAlignment) => {

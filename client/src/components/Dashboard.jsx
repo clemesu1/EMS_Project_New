@@ -14,7 +14,6 @@ import TreatmentContainer from "./TreatmentContainer";
 import CallReport from "../pages/CallReport";
 import Treatment from "../pages/Treatment";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { amber, deepOrange, grey } from "@mui/material/colors";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -122,9 +121,25 @@ export default function Dashboard() {
           ...(mode === "light"
             ? {
                 // palette values for light mode
+                primary: {
+                  main: "#6750A4",
+                  contrastText: "#fff",
+                },
+                secondary: {
+                  main: "#625B71",
+                  contrastText: "#fff",
+                },
               }
             : {
                 // palette values for dark mode
+                primary: {
+                  main: "#D0BCFF",
+                  contrastText: "#000",
+                },
+                secondary: {
+                  main: "#CCC2DC",
+                  contrastText: "#000",
+                },
               }),
         },
       }),

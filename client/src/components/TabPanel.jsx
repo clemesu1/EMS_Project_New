@@ -19,7 +19,7 @@ export default function TabPanel(props) {
                     bgcolor: (theme) =>
                         theme.palette.mode === 'light'
                             ? theme.palette.grey[100]
-                            : theme.palette.grey[900]
+                            : theme.palette.background.paper
                 }}>
                     {children}
                 </Box>
