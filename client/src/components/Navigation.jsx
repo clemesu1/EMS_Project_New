@@ -7,6 +7,7 @@ import {
   Divider,
   Drawer as MuiDrawer,
   IconButton,
+  Link,
   ListItemIcon,
   Menu,
   MenuItem,
@@ -22,7 +23,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SideNav from "./SideNav";
 import {
   Logout,
-  PersonAdd,
+  Home,
+  AccountCircle,
   Settings,
   Close,
   LightMode,
@@ -74,10 +76,14 @@ const Navigation = (props) => {
   const container =
     window !== undefined ? () => window().document.body : undefined;
   const toggle = useSelector((state) => state.drawerToggle.value);
+  const crewLog = useSelector((state) => state.crewLog);
+  const callTransaction = useSelector((state) => state.callTransaction);
 
   const [open, setOpen] = React.useState(false);
   const [settings, setSettings] = React.useState(false);
   const [mode, setMode] = React.useState("light");
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
 
   const handleMode = (event, newAlignment) => {
     setMode(newAlignment);
@@ -122,19 +128,31 @@ const Navigation = (props) => {
           exclusive
           fullWidth
         >
-          <ToggleButton value="light" sx={{ textTransform: "none" }} onClick={colorMode.setLightMode}>
+          <ToggleButton
+            value="light"
+            sx={{ textTransform: "none" }}
+            onClick={colorMode.setLightMode}
+          >
             <Stack direction="row" spacing={1}>
               <LightMode fontSize="small" />
               <Typography variant="body2">Light</Typography>
             </Stack>
           </ToggleButton>
-          <ToggleButton value="system" sx={{ textTransform: "none" }} onClick={colorMode.setSystemMode}>
+          <ToggleButton
+            value="system"
+            sx={{ textTransform: "none" }}
+            onClick={colorMode.setSystemMode}
+          >
             <Stack direction="row" spacing={1}>
               <SettingsBrightness fontSize="small" />
               <Typography variant="body2">System</Typography>
             </Stack>
           </ToggleButton>
-          <ToggleButton value="dark" sx={{ textTransform: "none" }} onClick={colorMode.setDarkMode}>
+          <ToggleButton
+            value="dark"
+            sx={{ textTransform: "none" }}
+            onClick={colorMode.setDarkMode}
+          >
             <Stack direction="row" spacing={1}>
               <DarkMode fontSize="small" />
               <Typography variant="body2">Dark</Typography>
@@ -145,10 +163,6 @@ const Navigation = (props) => {
     </Box>
   );
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const openMenu = Boolean(anchorEl);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -157,9 +171,36 @@ const Navigation = (props) => {
     setAnchorEl(null);
   };
 
+  const handleProfile = () => {
+    console.log("Profile: WORK IN PROGRESS");
+  };
+
+  const handleLogout = () => {
+    console.log("Logout: WORK IN PROGRESS");
+  };
+
+  const hover = {
+    "&:hover": {
+      borderRadius: "0.5em",
+    },
+  };
+
+  const menuItems = [
+    {
+      title: "Profile",
+      icon: <AccountCircle fontSize="small" />,
+      onClick: handleProfile,
+    },
+    {
+      title: "Settings",
+      icon: <Settings fontSize="small" />,
+      onClick: toggleSettingsDrawer,
+    },
+  ];
+
   return (
     <div>
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" enableColorOnDark open={open}>
         <Toolbar sx={{ pr: "24px" }}>
           <IconButton
             edge="start"
@@ -202,7 +243,9 @@ const Navigation = (props) => {
                 PaperProps={{
                   elevation: 0,
                   sx: {
+                    width: "12rem",
                     overflow: "visible",
+                    borderRadius: "0.5em",
                     filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                     mt: 1.5,
                     "& .MuiAvatar-root": {
@@ -216,7 +259,7 @@ const Navigation = (props) => {
                       display: "block",
                       position: "absolute",
                       top: 0,
-                      right: 14,
+                      right: 10,
                       width: 10,
                       height: 10,
                       bgcolor: "background.paper",
@@ -228,31 +271,40 @@ const Navigation = (props) => {
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
               >
-                <MenuItem>
-                  <Avatar /> Profile
-                </MenuItem>
-                <MenuItem>
-                  <Avatar /> My account
-                </MenuItem>
+                <Box sx={{ mx: 1, mt: 0.5, mb: 1, px: 2 }}>
+                  <Typography variant="subtitle2">{crewLog.userId}</Typography>
+                  <Typography color="textSecondary" variant="body2">
+                    {callTransaction.Driver_ID}
+                  </Typography>
+                </Box>
                 <Divider />
-                <MenuItem>
-                  <ListItemIcon>
-                    <PersonAdd fontSize="small" />
-                  </ListItemIcon>
-                  Add another account
-                </MenuItem>
-                <MenuItem onClick={toggleSettingsDrawer}>
-                  <ListItemIcon>
-                    <Settings fontSize="small" />
-                  </ListItemIcon>
-                  Settings
-                </MenuItem>
-                <MenuItem>
-                  <ListItemIcon>
-                    <Logout fontSize="small" />
-                  </ListItemIcon>
-                  Logout
-                </MenuItem>
+                <Box sx={{ m: 1 }}>
+                  <MenuItem
+                    sx={hover}
+                    component={Link}
+                    href="https://dottycare.com/"
+                  >
+                    <ListItemIcon>
+                      <Home />
+                    </ListItemIcon>
+                    <Typography variant="body2">Home</Typography>
+                  </MenuItem>
+                  {menuItems.map((item, index) => (
+                    <MenuItem key={index} onClick={item.onClick} sx={hover}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <Typography variant="body2">{item.title}</Typography>
+                    </MenuItem>
+                  ))}
+                </Box>
+                <Divider />
+                <Box sx={{ mx: 1, mt: 1 }}>
+                  <MenuItem onClick={handleLogout} sx={hover}>
+                    <ListItemIcon>
+                      <Logout fontSize="small" />
+                    </ListItemIcon>
+                    <Typography variant="subtitle2">Logout</Typography>
+                  </MenuItem>
+                </Box>
               </Menu>
             </>
           )}
@@ -287,7 +339,7 @@ const Navigation = (props) => {
       <MuiDrawer
         PaperProps={{
           elevation: 0,
-          style: { borderRadius: "10px 0px 10px 0px" },
+          sx: { borderRadius: "10px 0px 10px 0px" },
         }}
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}
         variant="temporary"

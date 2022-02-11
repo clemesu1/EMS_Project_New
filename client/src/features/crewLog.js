@@ -17,7 +17,6 @@ export const crewLogSlice = createSlice({
     },
 });
 
-export const crewLogSelector = (state) => state.crewLog;
 
 // Action creators are generated for each case reducer function
 export const { setCredentials } = crewLogSlice.actions;

@@ -6,9 +6,19 @@ export const getSnowflakeData = () => {
     );
 };
 
+export async function loginUser(data) {
+    return fetch("http://localhost:9000/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((data) => data.json());
+}
+
 export const toJson = (data) => {
     axios
-        .post("http://localhost:9000/transactions", JSON.stringify(data))
+        .post("http://localhost:9000/api", JSON.stringify(data))
         .then(() => console.log("EMS Data Saved"))
         .catch((err) => {
             console.error(err);
