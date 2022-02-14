@@ -210,7 +210,12 @@ const MechanismOfInjury = () => {
       </Grid>
       <Grid item xs={12} sm={3}>
         <Card variant="outlined">
-          <CardHeader title="M.V.C." sx={{ textAlign: 'center', color: 'white', bgcolor: 'navy' }} />
+          <CardHeader title="M.V.C." sx={{
+            textAlign: 'center', color: 'white', backgroundColor: (theme) =>
+              theme.palette.mode === "light"
+                ? '#2c387e'
+                : '#6573c3',
+          }} />
           <CardContent>
 
           </CardContent>

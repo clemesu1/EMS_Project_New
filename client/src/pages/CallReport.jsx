@@ -139,127 +139,127 @@ const CallReport = () => {
 
   return (
     <Container component="main" maxWidth="xl" sx={{ p: 3, mb: 4 }}>
-        <Typography
-          component="h1"
-          variant="h4"
-          align="center"
-          sx={{ mb: 4 }}
-          gutterBottom
-        >
-          Call Report
-        </Typography>
-        <Masonry columns={{ xs: 1, md: 2, lg: 3 }} spacing={3}>
-          {forms.map((form) => (
-            <Paper
-              key={form.title}
-              sx={{
-                backgroundColor: (theme) =>
-                  theme.palette.mode === "light"
-                    ? theme.palette.grey[200]
-                    : theme.palette.grey[700],
-              }}
-            >
-              <TableContainer>
-                <Toolbar
-                  sx={{
-                    pl: { sm: 2 },
-                    pr: { xs: 1, sm: 1 },
-                  }}
+      <Typography
+        component="h1"
+        variant="h4"
+        align="center"
+        sx={{ mb: 4 }}
+        gutterBottom
+      >
+        Call Report
+      </Typography>
+      <Masonry columns={{ xs: 1, md: 2, lg: 3 }} spacing={3}>
+        {forms.map((form, i) => (
+          <Paper
+            key={i}
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.mode === "light"
+                  ? '#f5deda'
+                  : '#534341',
+            }}
+          >
+            <TableContainer>
+              <Toolbar
+                sx={{
+                  pl: { sm: 2 },
+                  pr: { xs: 1, sm: 1 },
+                }}
+              >
+                <Typography
+                  sx={{ flex: "1 1 100%" }}
+                  variant="h6"
+                  id="tableTitle"
+                  component="div"
                 >
+                  {form.title}
+                </Typography>
+              </Toolbar>
+              <Table size="small">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Field</TableCell>
+                    <TableCell align="right">Data</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {Object.keys(form.data).map((row, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                      }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {row}
+                      </TableCell>
+                      <TableCell align="right">{form.data[row]}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        ))}
+        {treatmentForms.map((form, i) => (
+          <Paper key={i}>
+            {Object.keys(form.data).map((row, index) => (
+              <Accordion
+                key={index}
+                TransitionProps={{ unmountOnExit: true }}
+                sx={{
+                  backgroundColor: (theme) =>
+                    theme.palette.mode === "light"
+                      ? '#f5deda'
+                      : '#534341',
+                }}
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography
                     sx={{ flex: "1 1 100%" }}
                     variant="h6"
                     id="tableTitle"
                     component="div"
                   >
-                    {form.title}
+                    {form.title} - Page {parseInt(row) + 1}
                   </Typography>
-                </Toolbar>
-                <Table size="small">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Field</TableCell>
-                      <TableCell align="right">Data</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {Object.keys(form.data).map((row, index) => (
-                      <TableRow
-                        key={index}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          {row}
-                        </TableCell>
-                        <TableCell align="right">{form.data[row]}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Paper>
-          ))}
-          {treatmentForms.map((form) => (
-            <Paper key={form.title}>
-              {Object.keys(form.data).map((row, index) => (
-                <Accordion
-                  key={index}
-                  TransitionProps={{ unmountOnExit: true }}
-                  sx={{
-                    backgroundColor: (theme) =>
-                      theme.palette.mode === "light"
-                        ? theme.palette.grey[200]
-                        : theme.palette.grey[700],
-                  }}
-                >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                      sx={{ flex: "1 1 100%" }}
-                      variant="h6"
-                      id="tableTitle"
-                      component="div"
-                    >
-                      {form.title} - Page {parseInt(row) + 1}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <TableContainer>
-                      <Table size="small">
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>Field</TableCell>
-                            <TableCell align="right">Data</TableCell>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <TableContainer>
+                    <Table size="small">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Field</TableCell>
+                          <TableCell align="right">Data</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {Object.keys(form.data[row]).map((item, id) => (
+                          <TableRow
+                            key={id}
+                            sx={{
+                              "&:last-child td, &:last-child th": {
+                                border: 0,
+                              },
+                            }}
+                          >
+                            <TableCell component="th" scope="row">
+                              {item}
+                            </TableCell>
+                            <TableCell align="right">
+                              {form.data[row][item]}
+                            </TableCell>
                           </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {Object.keys(form.data[row]).map((item, id) => (
-                            <TableRow
-                              key={id}
-                              sx={{
-                                "&:last-child td, &:last-child th": {
-                                  border: 0,
-                                },
-                              }}
-                            >
-                              <TableCell component="th" scope="row">
-                                {item}
-                              </TableCell>
-                              <TableCell align="right">
-                                {form.data[row][item]}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
-            </Paper>
-          ))}
-        </Masonry>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Paper>
+        ))}
+      </Masonry>
     </Container>
   );
 };

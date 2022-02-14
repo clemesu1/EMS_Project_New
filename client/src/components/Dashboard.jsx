@@ -15,7 +15,7 @@ import CallReport from "../pages/CallReport";
 import Treatment from "../pages/Treatment";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
 function DashboardContent() {
   const colorMode = React.useContext(ColorModeContext);
@@ -30,10 +30,7 @@ function DashboardContent() {
     <React.Fragment>
       <Box
         sx={{
-          bgcolor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
+
           display: "flex",
         }}
       >
@@ -95,16 +92,13 @@ function DashboardContent() {
 }
 
 export default function Dashboard() {
-  const [mode, setMode] = React.useState("light");
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = React.useState(prefersDarkMode ? 'dark' : 'light');
 
   const colorMode = React.useMemo(
     () => ({
-      setLightMode: () => {
-        setMode("light");
-      },
-      setDarkMode: () => {
-        setMode("dark");
+      setColorMode: (mode) => {
+        setMode(mode);
       },
       setSystemMode: () => {
         setMode(prefersDarkMode ? "dark" : "light");
@@ -116,31 +110,52 @@ export default function Dashboard() {
   const theme = React.useMemo(
     () =>
       createTheme({
+        typography: {
+          fontFamily: [
+            'Rubik',
+          ],
+        },
         palette: {
           mode,
           ...(mode === "light"
             ? {
-                // palette values for light mode
-                primary: {
-                  main: "#6750A4",
-                  contrastText: "#fff",
-                },
-                secondary: {
-                  main: "#625B71",
-                  contrastText: "#fff",
-                },
-              }
+              // palette values for light mode
+              primary: {
+                main: "#9c4234",
+                light: "#ffdad2",
+                dark: "#400100",
+                contrastText: "#ffede9",
+              },
+              secondary: {
+                main: "#775751",
+                light: "#ffdad3",
+                dark: "#2d1511",
+                contrastText: "#ffdad3",
+              },
+              background: {
+                paper: '#fcfcfc',
+                default: '#fcfcfc',
+              },
+            }
             : {
-                // palette values for dark mode
-                primary: {
-                  main: "#D0BCFF",
-                  contrastText: "#000",
-                },
-                secondary: {
-                  main: "#CCC2DC",
-                  contrastText: "#000",
-                },
-              }),
+              // palette values for dark mode
+              primary: {
+                main: "#ffb4a5",
+                light: "#ffdad2",
+                dark: "#7d2b1f",
+                contrastText: "#5f150b",
+              },
+              secondary: {
+                main: "#e7bdb5",
+                light: "#ffdad3",
+                dark: "#5d3f3a",
+                contrastText: "#442924",
+              },
+              background: {
+                paper: '#201a19',
+                default: '#201a19',
+              },
+            }),
         },
       }),
     [mode]

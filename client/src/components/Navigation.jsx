@@ -81,13 +81,9 @@ const Navigation = (props) => {
 
   const [open, setOpen] = React.useState(false);
   const [settings, setSettings] = React.useState(false);
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState('system');
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openMenu = Boolean(anchorEl);
-
-  const handleMode = (event, newAlignment) => {
-    setMode(newAlignment);
-  };
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -103,6 +99,17 @@ const Navigation = (props) => {
 
     setSettings(!settings);
   };
+
+  const handleColorMode = (event, newColorMode) => {
+    if (newColorMode !== null) {
+      setMode(newColorMode)
+      if (newColorMode === 'system') {
+        colorMode.setSystemMode();
+        return;
+      }
+      colorMode.setColorMode(newColorMode);
+    }
+  }
 
   const drawer = (
     <Box
@@ -123,15 +130,14 @@ const Navigation = (props) => {
         </Typography>
         <ToggleButtonGroup
           value={mode}
-          onChange={handleMode}
-          color="primary"
           exclusive
+          onChange={handleColorMode}
+          color="primary"
           fullWidth
         >
           <ToggleButton
             value="light"
             sx={{ textTransform: "none" }}
-            onClick={colorMode.setLightMode}
           >
             <Stack direction="row" spacing={1}>
               <LightMode fontSize="small" />
@@ -141,7 +147,6 @@ const Navigation = (props) => {
           <ToggleButton
             value="system"
             sx={{ textTransform: "none" }}
-            onClick={colorMode.setSystemMode}
           >
             <Stack direction="row" spacing={1}>
               <SettingsBrightness fontSize="small" />
@@ -151,7 +156,6 @@ const Navigation = (props) => {
           <ToggleButton
             value="dark"
             sx={{ textTransform: "none" }}
-            onClick={colorMode.setDarkMode}
           >
             <Stack direction="row" spacing={1}>
               <DarkMode fontSize="small" />

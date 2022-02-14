@@ -124,6 +124,7 @@ const ActionDial = () => {
     <div>
       <SpeedDial
         ariaLabel="save speed dial"
+        FabProps={{ color: 'secondary' }}
         sx={{ position: "fixed", bottom: 16, right: 16 }}
         icon={<SpeedDialIcon />}
         open={dialOpen}

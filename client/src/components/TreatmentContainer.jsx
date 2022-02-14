@@ -40,6 +40,7 @@ const TreatmentContainer = () => {
 							New
 						</Button>
 						<Pagination
+							color="primary"
 							variant="outlined"
 							page={page}
 							count={pageArray.length}
