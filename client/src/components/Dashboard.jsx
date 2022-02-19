@@ -14,11 +14,12 @@ import TreatmentContainer from "./TreatmentContainer";
 import CallReport from "../pages/CallReport";
 import Treatment from "../pages/Treatment";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ColorModeContext from './ColorModeContext';
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
+function DashboardContent(props) {
+  const { drizzle, drizzleState } = props;
 
-function DashboardContent() {
-  const colorMode = React.useContext(ColorModeContext);
+  const address = drizzleState.accounts[0];
 
   const toggle = useSelector((state) => state.drawerToggle.value);
 
@@ -35,7 +36,7 @@ function DashboardContent() {
         }}
       >
         <CssBaseline />
-        <Navigation colorMode={colorMode} />
+        <Navigation address={address}/>
         <Box
           component="main"
           sx={{
@@ -85,15 +86,17 @@ function DashboardContent() {
           </Box>
           <Copyright />
         </Box>
-        {toggle && <ActionDial />}
+        {toggle && <ActionDial drizzle={drizzle} drizzleState={drizzleState} />}
       </Box>
     </React.Fragment>
   );
 }
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [mode, setMode] = React.useState(prefersDarkMode ? 'dark' : 'light');
+
+  const { drizzle, drizzleState } = props;
 
   const colorMode = React.useMemo(
     () => ({
@@ -164,7 +167,7 @@ export default function Dashboard() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <DashboardContent />
+        <DashboardContent drizzle={drizzle} drizzleState={drizzleState} />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

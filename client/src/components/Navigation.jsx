@@ -31,6 +31,7 @@ import {
   DarkModeOutlined as DarkMode,
   SettingsBrightness,
 } from "@mui/icons-material";
+import ColorModeContext from './ColorModeContext';
 
 const drawerWidth = 240;
 
@@ -72,7 +73,8 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Navigation = (props) => {
-  const { window, colorMode } = props;
+  const { window, address } = props;
+  const colorMode = React.useContext(ColorModeContext);
   const container =
     window !== undefined ? () => window().document.body : undefined;
   const toggle = useSelector((state) => state.drawerToggle.value);
@@ -224,94 +226,105 @@ const Navigation = (props) => {
           >
             Dotty Care
           </Typography>
-          {toggle && (
-            <>
-              <Tooltip title="Account settings">
-                <IconButton
-                  onClick={handleClick}
-                  size="small"
-                  sx={{ ml: 2 }}
-                  aria-controls={openMenu ? "account-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={openMenu ? "true" : undefined}
+          <Box display="flex" alignItems="center">
+            {toggle && (
+              <>
+                <Typography
+                  component="p"
+                  variant="body1"
+                  color="inherit"
+                  noWrap
+                  sx={{ flexGrow: 1, display: { xs: "none", md: 'flex' }, }}
                 >
-                  <Avatar sx={{ width: 32, height: 32 }} />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={openMenu}
-                onClose={handleClose}
-                onClick={handleClose}
-                PaperProps={{
-                  elevation: 0,
-                  sx: {
-                    width: "12rem",
-                    overflow: "visible",
-                    borderRadius: "0.5em",
-                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                    mt: 1.5,
-                    "& .MuiAvatar-root": {
-                      width: 32,
-                      height: 32,
-                      ml: -0.5,
-                      mr: 1,
-                    },
-                    "&:before": {
-                      content: '""',
-                      display: "block",
-                      position: "absolute",
-                      top: 0,
-                      right: 10,
-                      width: 10,
-                      height: 10,
-                      bgcolor: "background.paper",
-                      transform: "translateY(-50%) rotate(45deg)",
-                      zIndex: 0,
-                    },
-                  },
-                }}
-                transformOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-              >
-                <Box sx={{ mx: 1, mt: 0.5, mb: 1, px: 2 }}>
-                  <Typography variant="subtitle2">{crewLog.userId}</Typography>
-                  <Typography color="textSecondary" variant="body2">
-                    {callTransaction.Driver_ID}
-                  </Typography>
-                </Box>
-                <Divider />
-                <Box sx={{ m: 1 }}>
-                  <MenuItem
-                    sx={hover}
-                    component={Link}
-                    href="https://dottycare.com/"
+                  {address}
+                </Typography>
+                <Tooltip title="Account settings">
+                  <IconButton
+                    onClick={handleClick}
+                    size="small"
+                    sx={{ ml: 2 }}
+                    aria-controls={openMenu ? "account-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={openMenu ? "true" : undefined}
                   >
-                    <ListItemIcon>
-                      <Home />
-                    </ListItemIcon>
-                    <Typography variant="body2">Home</Typography>
-                  </MenuItem>
-                  {menuItems.map((item, index) => (
-                    <MenuItem key={index} onClick={item.onClick} sx={hover}>
-                      <ListItemIcon>{item.icon}</ListItemIcon>
-                      <Typography variant="body2">{item.title}</Typography>
+                    <Avatar sx={{ width: 32, height: 32 }} />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  anchorEl={anchorEl}
+                  id="account-menu"
+                  open={openMenu}
+                  onClose={handleClose}
+                  onClick={handleClose}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      width: "12rem",
+                      overflow: "visible",
+                      borderRadius: "0.5em",
+                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                      mt: 1.5,
+                      "& .MuiAvatar-root": {
+                        width: 32,
+                        height: 32,
+                        ml: -0.5,
+                        mr: 1,
+                      },
+                      "&:before": {
+                        content: '""',
+                        display: "block",
+                        position: "absolute",
+                        top: 0,
+                        right: 10,
+                        width: 10,
+                        height: 10,
+                        bgcolor: "background.paper",
+                        transform: "translateY(-50%) rotate(45deg)",
+                        zIndex: 0,
+                      },
+                    },
+                  }}
+                  transformOrigin={{ horizontal: "right", vertical: "top" }}
+                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                >
+                  <Box sx={{ mx: 1, mt: 0.5, mb: 1, px: 2 }}>
+                    <Typography variant="subtitle2">{crewLog.userId}</Typography>
+                    <Typography color="textSecondary" variant="body2">
+                      {callTransaction.Driver_ID}
+                    </Typography>
+                  </Box>
+                  <Divider />
+                  <Box sx={{ m: 1 }}>
+                    <MenuItem
+                      sx={hover}
+                      component={Link}
+                      href="https://dottycare.com/"
+                    >
+                      <ListItemIcon>
+                        <Home />
+                      </ListItemIcon>
+                      <Typography variant="body2">Home</Typography>
                     </MenuItem>
-                  ))}
-                </Box>
-                <Divider />
-                <Box sx={{ mx: 1, mt: 1 }}>
-                  <MenuItem onClick={handleLogout} sx={hover}>
-                    <ListItemIcon>
-                      <Logout fontSize="small" />
-                    </ListItemIcon>
-                    <Typography variant="subtitle2">Logout</Typography>
-                  </MenuItem>
-                </Box>
-              </Menu>
-            </>
-          )}
+                    {menuItems.map((item, index) => (
+                      <MenuItem key={index} onClick={item.onClick} sx={hover}>
+                        <ListItemIcon>{item.icon}</ListItemIcon>
+                        <Typography variant="body2">{item.title}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Box>
+                  <Divider />
+                  <Box sx={{ mx: 1, mt: 1 }}>
+                    <MenuItem onClick={handleLogout} sx={hover}>
+                      <ListItemIcon>
+                        <Logout fontSize="small" />
+                      </ListItemIcon>
+                      <Typography variant="subtitle2">Logout</Typography>
+                    </MenuItem>
+                  </Box>
+                </Menu>
+              </>
+            )}
+          </Box>
         </Toolbar>
       </AppBar>
       <MuiDrawer

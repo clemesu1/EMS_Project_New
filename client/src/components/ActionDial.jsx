@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   IconButton,
@@ -12,13 +12,16 @@ import SaveIcon from "@mui/icons-material/Save";
 import PrintIcon from "@mui/icons-material/Print";
 import ShareIcon from "@mui/icons-material/Share";
 import CloseIcon from "@mui/icons-material/Close";
+import SendIcon from '@mui/icons-material/Send';
 import { toJson } from "../adapters/snowflake";
 
-const ActionDial = () => {
+const ActionDial = (props) => {
   const [open, setOpen] = React.useState(false);
   const [dialOpen, setDialOpen] = React.useState(false);
   const [snackPack, setSnackPack] = React.useState([]);
   const [messageInfo, setMessageInfo] = React.useState(undefined);
+  const { drizzle, drizzleState } = props;
+  const [stackId, setStackID] = useState(null);
 
   React.useEffect(() => {
     if (snackPack.length && !messageInfo) {
@@ -83,8 +86,9 @@ const ActionDial = () => {
       onClick: () => handleCopy(emsData),
     },
     { icon: <SaveIcon />, name: "Save", onClick: () => handleSave(emsData) },
-    { icon: <PrintIcon />, name: "Print", onClick: () => handlePrint(emsData) },
-    { icon: <ShareIcon />, name: "Share", onClick: () => handleShare(emsData) },
+    { icon: <SendIcon />, name: "Send to Blockchain", onClick: (e) => handleBlockchainSave(e, emsData) },
+    { icon: <PrintIcon />, name: "Print", onClick: () => handlePrint() },
+    { icon: <ShareIcon />, name: "Share", onClick: () => handleShare() },
   ];
 
   const handleClick = (message) => {
@@ -92,12 +96,34 @@ const ActionDial = () => {
   };
 
   const handleCopy = (data) => {
-    handleClick("Data copied to clipboard.");
+    handleClick("Data copied to clipboard");
     navigator.clipboard.writeText(JSON.stringify(data));
   };
 
+  const handleBlockchainSave = (event, data) => {
+    event.preventDefault();
+    handleClick("Data saved on blockchain");
+    const value = JSON.stringify(data);
+    
+    // send to blockchain
+    const contract = drizzle.contracts.SimpleStorage;
+    console.log(contract)
+		const stackId = contract.methods['set'].cacheSend(value, { from: drizzleState.accounts[0] });
+		setStackID(stackId);
+    console.log(getTxStatus());
+  };
+
+  const getTxStatus = () => {
+		const { transactions, transactionStack } = drizzleState;
+		const txHash = transactionStack[stackId];
+
+		if (!txHash) return null;
+
+		return `Transaction status: ${transactions[txHash] && transactions[txHash].status}`;
+	}
+
   const handleSave = (data) => {
-    handleClick("Data saved.");
+    handleClick("Data saved");
     toJson(data);
   };
 

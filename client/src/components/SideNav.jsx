@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
-import { Call as CallDetailsIcon, Assessment as AssessmentIcon, Healing as TreatmentIcon, Description as CallReportIcon, HeadsetMic as OperatorDetailsIcon } from '@mui/icons-material';
+import { Call as CallDetailsIcon, Assessment as AssessmentIcon, Healing as TreatmentIcon, Description as CallReportIcon } from '@mui/icons-material';
 
 const SideNav = (props) => {
     let navigate = useNavigate();
